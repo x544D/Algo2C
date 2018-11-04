@@ -1,12 +1,14 @@
-variables a,b : entier string 
 Debut
-Ecrire("Donnez un Nombre : ")
-Lire(a)
+entier a,b;
+Ecrire("Donnez un Nombre : ");
+Lire(a);
 Si(a <= 10) Alors:
-    Ecrire("Bien jouer")
+    TantQue(b >= 0) Faire:
+        Ecrire(b);
+    FinTantQue
 SinonSi(a <= 50) Alors:
-    Ecrire("Wow")
+    Ecrire("Wow");
 Sinon
-    Ecrire("Rip")
+    Ecrire("Rip");
 FinSi
 Fin

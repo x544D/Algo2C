@@ -1,19 +1,25 @@
-variables a,b ; int  string  
-main()
+#include "saad_Lib/mylib.h" //matmse7ch hadi
+
+int main()
 {
-printf("Donnez un Nombre ; ")
-scanf("%d",a)
+int  a,b;
+Ecrire("Donnez un Nombre ; ");
+//Lire(a);
 if(a <= 10)
 {
-    printf("Bien jouer")
+    while(b >= 0) {
+        Ecrire(b);
+    }
+
 }
 else if(a <= 50)
 {
-    printf("Wow")
+    Ecrire("Wow");
 }
 else
 {
-    printf("Rip")
+    Ecrire("Rip");
 }
 
+return 0; // matmse7ch hadi
 }

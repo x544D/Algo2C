@@ -39,28 +39,34 @@ def GetAlgo(): #Ret Tuple([NumLines].[NumChrs].[LinesArray].[CharsArray])
 
 
 def Algo2c():
-    #Algo Syntax
+    #Algo Condition and Lire Ecrire
     r     = GetAlgo() #Tuple([NumLines].[NumChrs].[LinesArray].[CharsArray])
     words = r[2]
-    words = [w.replace('Ecrire(', 'printf(') for w in words]
-    words = [w.replace('Lire(', 'scanf("%d",') for w in words]
+    #words = [w.replace('Ecrire(', 'printf(') for w in words]
+    #words = [w.replace('Lire(', 'scanf("%d",') for w in words]
     words = [w.replace(') Alors:', ')\n{') for w in words]
     words = [w.replace('SinonSi(', '}\nelse if(') for w in words]
     words = [w.replace('Sinon', '}\nelse\n{') for w in words]
     words = [w.replace('FinSi', '}\n') for w in words]
     words = [w.replace('Si(', 'if(') for w in words]
-    words = [w.replace('Debut', 'main()\n{') for w in words]
-    words = [w.replace('Fin', '}') for w in words]
+    words = [w.replace('Debut', 'int main()\n{') for w in words]
+    #Algo Boucles
+    words = [w.replace('FinTantQue', '}\n') for w in words]
+    words = [w.replace('TantQue', 'while') for w in words]
+    words = [w.replace('Faire:', '{') for w in words]
+
+    
     #Type de Vars :
     #entier - reel - bool - string - char - ptr(pointers)
     words = [ l.replace(':',';') for l in words]
-    words = [ l.replace('Variables','') for l in words]
+    words = [ l.replace('variables','') for l in words]
     words = [ l.replace('entier','int ') for l in words]
     words = [ l.replace('reel','double ') for l in words]
     words = [ l.replace('reelf','float ') for l in words]
     words = [ l.replace('bool','bool ') for l in words]
     words = [ l.replace('char','char ') for l in words]
     words = [ l.replace('string','string ') for l in words]
+    words = [w.replace('Fin', 'return 0; // matmse7ch hadi\n}') for w in words]
     words = ''.join(words)
     dbvar    = ['int','double','bool','string','char']
     tmp      = []
@@ -80,6 +86,7 @@ def Algo2c():
     typeTmp = ''.join(typeTmp)
     typeTmp = typeTmp.split('.')
     typeTmp = ' '.join(typeTmp).split()
+    
     #Ret
     return words, tmp, typeTmp
 
@@ -88,6 +95,7 @@ def WriteC():
     c   = cClass()    
     #Writing C Lines
     fs = open(c.FileName,c.FileMode)
+    fs.write('#include "saad_Lib/mylib.h" //matmse7ch hadi\n\n')
     listos = Algo2c()[0]
     for line in listos:
         fs.write(line)

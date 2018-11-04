@@ -1,0 +1,37 @@
+################### Types de Variables #####################
+## ------------------------------------------------------ ##
+## char : 1 seul character Exmple : 'a' .. 'b' ..'*' etc  ##
+## string : Chaine de charactere                          ##
+## entier : nombre entier Exmple : 1  2  3  4 ..etc       ##
+## reel   : nombre reel kay9bel Entier w a3dad b fasila   ##
+## reelf  : nombre reel mais ty9bl a3dad li b fasila safi ##
+## bool   : Boolaine .. Vrais - Faux                      ##
+## ------------------------------------------------------ ##
+############################################################
+
+## Darori tkhdem exactement b had les regles ##
+## Darori t7tarm les syntax - Majiscule-Miniscule(mazal ghadi ytad) ##
+## Darori tketbo ; apres Ecrire w Lire ..etc ##
+## Declaration dyal Variables ta7t Debut  ##
+## Declarer les variables haka : type x,y;  ## 
+## Si ..SinonsSi .. Sinon ..Selon ..  dima 7arf lwl dyal Kelma Majiscule ##
+## Algo khasha tsali b Fin  ##
+
+
+####################################
+## Exmple :                       ##
+## ------------------------------ ##
+## Debut                          ##
+## entier a;                      #### hadi Declaration dyal variable a de type Entier 
+## Ecrire("Donnez un Nombre : "); #### Ecrire n E kbira w f la fin kayn ;
+## Lire(a);                       #### Lire L kira w f la fin ;
+## Si(a <= 10) Alors:             #### Si ..SinonSi ..Sinon kimma 9arana Mr.Fahimi
+##    Ecrire("Bien jouer");       ##
+## SinonSi(a <= 50) Alors:        ##
+##    Ecrire("Wow");              ##
+## Sinon                          ##
+##    Ecrire("Rip");              ##
+## FinSi                          ##
+## Fin                            ##
+## ------------------------------ ##
+####################################
