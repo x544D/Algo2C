@@ -1,7 +1,8 @@
 #include "include/stdio.h"
+#include "include/unistd.h"
 
-void Ecrire(varkind xxxx)
+
+void Ecrire(char  *str )
 {
-    printf(xxxx)
+    printf("%s",str);
 }
-

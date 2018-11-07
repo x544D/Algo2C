@@ -3,8 +3,9 @@
 int main()
 {
 int  a,b;
+bool  c,d;
 Ecrire("Donnez un Nombre ; ");
-//Lire(a);
+Lire(a);
 if(a <= 10)
 {
     while(b >= 0) {

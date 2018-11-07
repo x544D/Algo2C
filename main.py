@@ -1,4 +1,14 @@
-from numpy import *
+################################
+##      MADE BY AMRANI SAAD   ##
+##      AKA : [0 x 5 4 4 D]   ##
+##      STARTED : 20 Oct 2018 ##
+##-----------Contact----------##
+##  Facebook: saadox.amrani   ##
+##  skype   : saad.amrani3    ##
+##  discord : KissM3#4096     ##
+################################
+
+
 
 class AlgoClass:
     FileName   = "algo.ofppt"
@@ -54,7 +64,16 @@ def Algo2c():
     words = [w.replace('FinTantQue', '}\n') for w in words]
     words = [w.replace('TantQue', 'while') for w in words]
     words = [w.replace('Faire:', '{') for w in words]
-
+    #Lines for managing scanf("%type",var) and printf();
+    AlgoTypes = ['entier','reel','reelf','string','char','bool']
+    varLinez = []
+    for lin in r[2]:
+        for ty in AlgoTypes:
+            if ty in lin:
+                varLinez += lin
+    varLinez = ''.join(varLinez).split('\n')
+    varLinez = [ item for item in varLinez if item ] ## will delete empty rows
+    print(varLinez)
     
     #Type de Vars :
     #entier - reel - bool - string - char - ptr(pointers)
@@ -86,10 +105,9 @@ def Algo2c():
     typeTmp = ''.join(typeTmp)
     typeTmp = typeTmp.split('.')
     typeTmp = ' '.join(typeTmp).split()
-    
+   
     #Ret
     return words, tmp, typeTmp
-
 
 def WriteC():
     c   = cClass()    
@@ -101,9 +119,10 @@ def WriteC():
         fs.write(line)
     fs.close()
 
+
 WriteC()
-print(str(Algo2c()[0])+"\n")
-print(str(Algo2c()[1])+"\n")
-print(str(Algo2c()[2])+"\n")
+#print(str(Algo2c()[0])+"\n")
+#print(str(Algo2c()[1])+"\n")
+#print(str(Algo2c()[2])+"\n")
 #print("\nLines : "+str(GetAlgo()[0])+"\nCharacters : "+str(GetAlgo()[1])+"\nLine Array : "+str(GetAlgo()[2])+"\nChar Array : "+str(GetAlgo()[3]))
 

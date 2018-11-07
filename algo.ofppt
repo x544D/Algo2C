@@ -1,5 +1,6 @@
 Debut
 entier a,b;
+bool c,d;
 Ecrire("Donnez un Nombre : ");
 Lire(a);
 Si(a <= 10) Alors:
