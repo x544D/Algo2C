@@ -1,0 +1,68 @@
+################### Types de Variables #####################
+## ------------------------------------------------------ ##
+## char : 1 seul character Exmple : 'a' .. 'b' ..'*' etc  ##
+## string : Chaine de charactere                          ##
+## entier : nombre entier Exmple : 1  2  3  4 ..etc       ##
+## reel   : nombre reel kay9bel Entier w a3dad b fasila   ##
+## reelf  : nombre reel mais ty9bl a3dad li b fasila safi ##
+## bool   : Boolaine .. Vrais - Faux                      ##
+## ------------------------------------------------------ ##
+############################################################
+
+## Darori tkhdem exactement b had les regles ##
+## Darori t7tarm les syntax - Majiscule-Miniscule(mazal ghadi ytad) ##
+## Darori tketbo ; apres Ecrire w Lire ..etc ##
+## Declaration dyal Variables ta7t Debut  ##
+## Declarer les variables haka : type x,y;  ## 
+## Si ..SinonsSi .. Sinon ..Selon ..  dima 7arf lwl dyal Kelma Majiscule ##
+## Algo khasha tsali b Fin  ##
+
+
+####################################
+## Exmple :                       ##
+## ------------------------------ ##
+## Debut                          ##
+## entier a;                      #### hadi Declaration dyal variable a de type Entier 
+## Ecrire("Donnez un Nombre : "); #### Ecrire n E kbira w f la fin kayn ;
+## Lire(a);                       #### Lire L kira w f la fin ;
+## Si(a <= 10) Alors:             #### Si ..SinonSi ..Sinon kimma 9arana Mr.Fahimi
+##    Ecrire("Bien jouer");       ##
+## SinonSi(a <= 50) Alors:        ##
+##    Ecrire("Wow");              ##
+## Sinon                          ##
+##    Ecrire("Rip");              ##
+## FinSi                          ##
+## Fin                            ##
+## ------------------------------ ##
+####################################
+
+
+	########################## TO DO NEXT / LATER #########################
+    #####################################################################
+    1 > Probelem in Algo'S Vars :
+        lets say our variable is 'a' of type int 
+        and we have another variable declared named 'atest' of type double
+        when we search in the Table of all algo File's vars generated ,
+        to get the type of variable 'a' .. we get the 'atest' since 'a'
+        is in 'atest'.
+    1 > [Solution that might work]
+        We need to get the len(var) to get the exact length ,
+        then we compare it with the length founf on our vars Table !
+    #####################################################################
+    2 > Problem in Replacing Multiple Lire(:
+        For example we have Lire(a); with a int 
+        and after that we have Lire(b); with B double
+        when generating the main.c file both of these gets replaced with :
+        scanf("%lf",&var) .. instead  it has to be %lf for double(reel) vars
+        and %d for entier(int) vars.
+    2 > [Solution possible]
+        in words[] i think it replaces every Lire(  with the last
+        Lire()'s infos found in the file ..
+        probably i gtta replace while searching in the file for Lire( 
+        in for loop using str.replace(old,new,max) // max to replace 
+        must be once to replace only the first found with it's var types
+        then go next and replace it depends on if() statements types of 
+        that algo var !
+    #####################################################################    
+    #####################################################################    
+
