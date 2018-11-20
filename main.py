@@ -8,6 +8,7 @@
 ##  discord : KissM3#4096     ##
 ################################
 
+import re
 
 
 class AlgoClass:
@@ -29,6 +30,10 @@ class cClass:
     
     TotalChars = 0
     CharsArray = []
+
+    ##### String Type #######
+    CharsTotal = 100
+    #########################
 
 
 def GetAlgo(): #Ret Tuple([NumLines].[NumChrs].[LinesArray].[CharsArray])
@@ -53,13 +58,21 @@ def Algo2c():
     r     = GetAlgo() #Tuple([NumLines].[NumChrs].[LinesArray].[CharsArray])
     words = r[2]
     #words = [w.replace('Ecrire(', 'printf(') for w in words]
-    #words = [w.replace('Lire(', 'scanf("%d",') for w in words]
     words = [w.replace(') Alors:', ')\n{') for w in words]
     words = [w.replace('SinonSi(', '}\nelse if(') for w in words]
     words = [w.replace('Sinon', '}\nelse\n{') for w in words]
     words = [w.replace('FinSi', '}\n') for w in words]
     words = [w.replace('Si(', 'if(') for w in words]
     words = [w.replace('Debut', 'int main()\n{') for w in words]
+    #Lire-ScanfDetect VariablesTypes
+    LireVar = ""
+    isThereLire = False
+    #index of var inside lire() is 5
+    for each in words:
+        if 'Lire(' in each:
+            #Get the variable by () indexes
+            LireVar = str(each[each.index('(') +1:each.index(')')]) 
+            isThereLire = True
     #Algo Boucles
     words = [w.replace('FinTantQue', '}\n') for w in words]
     words = [w.replace('TantQue', 'while') for w in words]
@@ -73,7 +86,58 @@ def Algo2c():
                 varLinez += lin
     varLinez = ''.join(varLinez).split('\n')
     varLinez = [ item for item in varLinez if item ] ## will delete empty rows
-    print(varLinez)
+
+    #Checking type of varuable used in Lire() 
+    VarsAndTypes = LireVariableType(varLinez)
+    ij = 0
+    for each in VarsAndTypes[1]:
+        if LireVar in each:
+            break
+        ij += 1
+    #And Finaly We Got Our Type ha7na readt to type scanf
+    if isThereLire :
+        typeOfThisVariable =  VarsAndTypes[0][ij]
+        if typeOfThisVariable == 'entier':
+            words = [w.replace('Lire(', 'scanf("%d",&', 1) for w in words]
+        elif typeOfThisVariable == 'reel' or typeOfThisVariable == 'reelf':
+            words = [w.replace('Lire(', 'scanf("%lf",&',1) for w in words]
+        elif typeOfThisVariable == 'char':
+            words = [w.replace('Lire(', 'scanf("%c",&',1) for w in words]
+        elif typeOfThisVariable == 'bool': #write 0 or 1
+            words = [w.replace('Lire(', 'scanf("%d",&',1) for w in words]
+        elif typeOfThisVariable == 'string':
+            words = [w.replace('Lire(', 'scanf("%s",&',1) for w in words]
+   
+    #WORK STOPED HERE #TODO# LIST AFTER
+    '''
+    #####################################################################
+    1 > Probelem in Algo'S Vars :
+        lets say our variable is 'a' of type int 
+        and we have another variable declared named 'atest' of type double
+        when we search in the Table of all algo File's vars generated ,
+        to get the type of variable 'a' .. we get the 'atest' since 'a'
+        is in 'atest'.
+    1 > [Solution that might work]
+        We need to get the len(var) to get the exact length ,
+        then we compare it with the length founf on our vars Table !
+    #####################################################################
+    2 > Problem in Replacing Multiple Lire(:
+        For example we have Lire(a); with a int 
+        and after that we have Lire(b); with B double
+        when generating the main.c file both of these gets replaced with :
+        scanf("%lf",&var) .. instead  it has to be %lf for double(reel) vars
+        and %d for entier(int) vars.
+    2 > [Solution possible]
+        in words[] i think it replaces every Lire(  with the last
+        Lire()'s infos found in the file ..
+        probably i gtta replace while searching in the file for Lire( 
+        in for loop using str.replace(old,new,max) // max to replace 
+        must be once to replace only the first found with it's var types
+        then go next and replace it depends on if() statements types of 
+        that algo var !
+    #####################################################################    
+    '''
+    print(VarsAndTypes)
     
     #Type de Vars :
     #entier - reel - bool - string - char - ptr(pointers)
@@ -108,6 +172,34 @@ def Algo2c():
    
     #Ret
     return words, tmp, typeTmp
+
+def LireVariableType(arrVars):
+    tempArr = arrVars
+
+    AlgoTypes = ['entier','reel','reelf','string','char','bool']
+    types = []
+    newVars = []
+    MyDic   = {}
+
+    for each in tempArr:
+        lenRow  = len(each)
+        for eachvar in AlgoTypes:
+            if eachvar in each:
+                types += eachvar
+                newVars += each[len(eachvar)+1:lenRow]
+                newVars = ''.join(newVars)
+            MyDic[eachvar] = newVars
+        types += '/'
+        newVars += '/'
+    types = ''.join(types).split('/')
+    types = [item for item in types if item]
+    newVars = ''.join(newVars).split('/')
+   # newVars = ''.join(newVars).split(',')
+    newVars = ';'.join(newVars).split(';')
+
+    newVars = [item for item in newVars if item]
+    
+    return types , newVars#, MyDic
 
 def WriteC():
     c   = cClass()    

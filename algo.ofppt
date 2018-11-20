@@ -1,8 +1,13 @@
 Debut
+reel atest;
 entier a,b;
-bool c,d;
+
 Ecrire("Donnez un Nombre : ");
+Lire(test);
 Lire(a);
+
+
+
 Si(a <= 10) Alors:
     TantQue(b >= 0) Faire:
         Ecrire(b);
